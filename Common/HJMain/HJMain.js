@@ -38,7 +38,7 @@ export default class HJMain extends Component {
 
            <TabNavigtor>
 
-                   {/*首页*/}
+                   {/*首页 商店 我的 更多 TabBarItems*/}
                {this.renderTabBarNavigatorItems('首页','icon_tabbar_homepage','icon_tabbar_homepage_selected','Home','首页',Home)}
                {this.renderTabBarNavigatorItems('商店','icon_tabbar_merchant_normal','icon_tabbar_merchant_selected','Shop','商店',Shop,1)}
                {this.renderTabBarNavigatorItems('我的','icon_tabbar_mine','icon_tabbar_mine_selected','Me','我的',Me,)}
@@ -125,7 +125,7 @@ export default class HJMain extends Component {
            </TabNavigtor>
         );
     }
-
+    //封装TabBarItems和Navigator
     renderTabBarNavigatorItems(title,IconName, SelectedIconName,selectedTab,componentName,component,badgeText){
 
         return(
@@ -146,16 +146,17 @@ export default class HJMain extends Component {
                badgeText = {badgeText}
 
             >
+               {/*导航条跳转*/}
                <Navigator
 
                    initialRoute={{
-                       name: componentName,
-                       component:component
+                       name: componentName,  //名称
+                       component:component   //跳转的界面
                    }}
 
                    configureScene={() => {
 
-                       return Navigator.SceneConfigs.PushFromRight;
+                       return Navigator.SceneConfigs.PushFromRight; //跳转方式
                    }}
 
                    renderScene={(route, navigator) =>{
@@ -175,7 +176,7 @@ export default class HJMain extends Component {
 const styles = StyleSheet.create({
 
     iconStyle :{
-        width: Platform.OS === 'ios' ? 30 :25,
+        width: Platform.OS === 'ios' ? 30 :25, //如果当前系统是ios 是系统则width:30 是安卓则width:25
         height: Platform.OS === 'ios' ? 30 :25,
     },
     titlesStyles :{
