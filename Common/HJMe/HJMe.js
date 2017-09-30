@@ -15,12 +15,15 @@ import {
 // 导入Mycell组件
 var MyCell = require('./MyCell');
 var MiddleView = require('./MiddleView');
+var MeHeaderView = require('./MeHeaderView');
 
 export default class HJMe extends Component {
     render() {
         return (
            <ScrollView style={{backgroundColor:'#e8e8e8'}}>
-               <View style={{marginTop:10}}>
+               {/*顶部视图*/}
+               <MeHeaderView/>
+               <View style={{marginTop:0}}>
                    <MyCell
                        LeftImage="collect"
                        LeftTitle="我的订单"
