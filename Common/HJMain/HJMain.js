@@ -39,10 +39,10 @@ export default class HJMain extends Component {
            <TabNavigtor>
 
                    {/*首页 商店 我的 更多 TabBarItems*/}
-               {this.renderTabBarNavigatorItems('首页','icon_tabbar_homepage','icon_tabbar_homepage_selected','Home','首页',Home)}
-               {this.renderTabBarNavigatorItems('商店','icon_tabbar_merchant_normal','icon_tabbar_merchant_selected','Shop','商店',Shop,1)}
-               {this.renderTabBarNavigatorItems('我的','icon_tabbar_mine','icon_tabbar_mine_selected','Me','我的',Me,)}
-               {this.renderTabBarNavigatorItems('更多','icon_tabbar_misc','icon_tabbar_misc_selected','More','更多',More,5)}
+               {this.renderTabBarNavigatorItems('首页','icon_tabbar_homepage','icon_tabbar_homepage_selected','Home','首页',Home,false)}
+               {this.renderTabBarNavigatorItems('商店','icon_tabbar_merchant_normal','icon_tabbar_merchant_selected','Shop','商店',Shop,true,1)}
+               {this.renderTabBarNavigatorItems('我的','icon_tabbar_mine','icon_tabbar_mine_selected','Me','我的',Me,false)}
+               {this.renderTabBarNavigatorItems('更多','icon_tabbar_misc','icon_tabbar_misc_selected','More','更多',More,true,5)}
 
                {/*    // 抽取封装  renderTabBarNavigatorItems
                    <TabNavigtor.Item
@@ -126,7 +126,7 @@ export default class HJMain extends Component {
         );
     }
     //封装TabBarItems和Navigator
-    renderTabBarNavigatorItems(title,IconName, SelectedIconName,selectedTab,componentName,component,badgeText){
+    renderTabBarNavigatorItems(title,IconName, SelectedIconName,selectedTab,componentName,component,isbadge,badgeText){
 
         return(
            <TabNavigtor.Item
@@ -143,9 +143,10 @@ export default class HJMain extends Component {
                // 被选中字体颜色
                selectedTitleStyle= {styles.titlesStyles}
                // 角标
-               badgeText = {badgeText}
+               //badgeText = {badgeText}
+               renderBadge={()=>isbadge ? <View style={styles.badgeView}><Text style={styles.badgeText}>{badgeText}</Text></View> : null}
+               >
 
-            >
                {/*导航条跳转*/}
                <Navigator
 
@@ -182,6 +183,23 @@ const styles = StyleSheet.create({
     titlesStyles :{
         color:'rgba(212,97,0,1)',
     },
+    // 自定义角标样式
+    badgeView:{
+        width:14,
+        height:14 ,
+        backgroundColor:'#f85959',
+        borderWidth:1,
+        marginLeft:10,
+        marginTop:3,
+        borderColor:'#FFF',
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:7,
+    },
+    badgeText:{
+        color:'#fff',
+        fontSize:8,
+    }
 });
 
 module.exports = HJMain;

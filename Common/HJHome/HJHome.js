@@ -14,11 +14,12 @@ import {
     Image,
     Platform,
     AlertIOS,
+    ScrollView,
 
 } from 'react-native';
 
 var  HomeDetail = require('./HomeDetail');
-
+var TopView = require('./TopView');
 
 var Dimensions = require('Dimensions');
 var {width,height} = Dimensions.get('window');
@@ -30,12 +31,10 @@ export default class HJHome extends Component {
             <View style={styles.container}>
                 {/*设置导航条*/}
                 {this.renderNavBar()}
-
-               <TouchableOpacity onPress={()=>this.PushDetail()} >
-                <Text style={styles.welcome}>
-                    我是首页!!!!
-                </Text>
-                </TouchableOpacity>
+                {/*内容模块*/}
+              <ScrollView>
+                  <TopView/>
+              </ScrollView>
             </View>
         );
     }

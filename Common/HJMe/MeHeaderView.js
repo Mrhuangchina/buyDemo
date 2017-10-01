@@ -10,6 +10,7 @@ import {
     View,
     Image,
     TouchableOpacity,
+    Platform,
 } from 'react-native';
 
 
@@ -91,13 +92,13 @@ export default class MeHeaderView extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height:160,
+        height:Platform.OS == 'ios'? 160 :160,
         backgroundColor:'rgb(255,96,0)'
     },
 
     topViewStyle:{
         flexDirection:'row',
-        marginTop:40,
+        marginTop:Platform.OS == 'ios'? 40:40,
         alignItems:'center',
         justifyContent:'space-between'
     },

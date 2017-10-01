@@ -20,7 +20,10 @@ var MeHeaderView = require('./MeHeaderView');
 export default class HJMe extends Component {
     render() {
         return (
-           <ScrollView style={{backgroundColor:'#e8e8e8'}}>
+           <ScrollView style={{backgroundColor:'#e8e8e8'}}
+            //contentInset={{top:-50}}
+            //contentOffset={{y:50}}
+           >
                {/*顶部视图*/}
                <MeHeaderView/>
                <View style={{marginTop:0}}>
