@@ -21,6 +21,9 @@ import {
 var  HomeDetail = require('./HomeDetail');
 var TopView = require('./TopView');
 
+var HomeMiddleView = require('./HomeMiddleView');
+var HomeMiddleBottomView = require('./HomeMiddleBottomView');
+
 var Dimensions = require('Dimensions');
 var {width,height} = Dimensions.get('window');
 
@@ -33,7 +36,12 @@ export default class HJHome extends Component {
                 {this.renderNavBar()}
                 {/*内容模块*/}
               <ScrollView>
+                  {/*头部视图*/}
                   <TopView/>
+                  {/*中间内容*/}
+                  <HomeMiddleView />
+                  {/*中间下半部分内容*/}
+                  <HomeMiddleBottomView/>
               </ScrollView>
             </View>
         );
