@@ -18,6 +18,12 @@ var JsonData = require('../../LocalData/XMG_Home_D4.json');
 
 
 export default class HomeMiddleBottomView extends Component {
+
+    static defaultProps = {
+        // 回调函数
+        popTopHome : null
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -51,11 +57,19 @@ export default class HomeMiddleBottomView extends Component {
                      subTitle={OneData.deputytitle}
                      rightIcon={this.DealWithImageUrl(OneData.imageurl)}
                      titleColor={OneData.typeface_color}
+                     tplurl={OneData.tplurl}
+                     callBackClickcell={(data)=>this.popToTopView(data)}
                 />
             )
         }
         return ItemArr;
 
+    }
+
+    // 往父级界面传递数据
+    popToTopView(data){
+
+        this.props.popTopHome(data);
     }
 
     // 处理图像的尺寸,因为后期的接口需要前端返回一个图片大小才给符合尺寸的图片接口。

@@ -15,7 +15,7 @@ import {
 // ------导入外部组件------------
 import TabNavigtor from 'react-native-tab-navigator';
 import  {Navigator} from 'react-native-deprecated-custom-components';
-
+//var Home = require('../Home/XMGHome');
 var Home = require('../HJHome/HJHome');
 var Me = require('../HJMe/HJMe');
 var More = require('../HJMore/HJMore');

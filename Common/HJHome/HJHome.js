@@ -24,6 +24,10 @@ var TopView = require('./TopView');
 var HomeMiddleView = require('./HomeMiddleView');
 var HomeMiddleBottomView = require('./HomeMiddleBottomView');
 
+var ShopCenter = require('./HJShopCenter');
+var ShopCenterDetail = require('./HJShopCenterDetail');
+
+var GeustYouLike = require('./HJGeustYouLike');
 var Dimensions = require('Dimensions');
 var {width,height} = Dimensions.get('window');
 
@@ -41,7 +45,17 @@ export default class HJHome extends Component {
                   {/*中间内容*/}
                   <HomeMiddleView />
                   {/*中间下半部分内容*/}
-                  <HomeMiddleBottomView/>
+                  <HomeMiddleBottomView
+                      popTopHome={(data)=>{this.PushDetail(data)}}
+                  />
+                  {/*购物中心*/}
+                   <ShopCenter
+                       popToHomeView = {(url)=>this.pushToShopCenterDetail(url)}
+                   />
+                  {/*猜你喜欢*/}
+                  <GeustYouLike
+
+                  />
               </ScrollView>
             </View>
         );
@@ -66,14 +80,26 @@ export default class HJHome extends Component {
     }
 
     //跳转到详情页面
-    PushDetail(){
-
+    PushDetail(data){
+            alert(data)
         this.props.navigator.push({
 
             component:HomeDetail,   // 要跳转过去的组件
             title:'首页详细页'
         });
 
+    }
+    // 跳转到购物中心详情界面
+    pushToShopCenterDetail(url){
+        this.props.navigator.push({
+
+            component:ShopCenterDetail,   // 要跳转过去的组件
+            passProps:{'url':this.dealWithUrl(url)}         // 需要传递数据到下一个界面
+        });
+    }
+    // 对url数据进行处理
+    dealWithUrl(url){
+        return url.replace('imeituan://www.meituan.com/web/?url=','')
     }
 }
 

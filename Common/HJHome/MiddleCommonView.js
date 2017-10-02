@@ -24,14 +24,18 @@ export default class MiddleCommonView extends Component {
         title:'',        // 标题
         subTitle:'',     // 子标题
         rightIcon:'',    // 右侧图片
-        titleColor:''   //  字体颜色
+        titleColor:'',   //  字体颜色
+
+        tplurl: '',      //下级界面的URL路径
+        // 回调函数
+        callBackClickCell: null
     }
 
 
 
     render() {
         return (
-         <TouchableOpacity activeOpacity={0.8} onPress={()=>{alert('跳转到相关界面')}}>
+         <TouchableOpacity activeOpacity={0.8} onPress={()=>{this.ClickCell(this.props.tplurl)}}>
              <View style={styles.container}>
                 {/*左边*/}
                <View>
@@ -43,6 +47,14 @@ export default class MiddleCommonView extends Component {
             </View>
          </TouchableOpacity>
         );
+    }
+
+    // 点击了cell
+    ClickCell(data){
+
+            if (this.props.callBackClickCell == null) return;
+        // 执行回调函数
+        this.props.callBackClickCell(data);
     }
 }
 
